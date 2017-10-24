@@ -9,12 +9,14 @@
 import UIKit
 //import AppKit
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, UITextViewDelegate{
 
     @IBOutlet weak var errorText: UILabel!
     @IBOutlet weak var outputText: UITextView!
     @IBOutlet weak var inputText: UITextView!
     @IBOutlet weak var shiftNumberText: UITextField!
+    let inputTextPlaceholder = "Plain text"
+    let outputTextPlaceholder = "Cipher text"
     let testDict = ["the":1,
                 "as":1,
                 "so":1,
@@ -27,6 +29,19 @@ class ViewController: UIViewController{
         //Let the keyboard be dismissed by tapping anywhere not on the keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        self.outputText.layer.borderWidth = 1.0
+        self.outputText.layer.borderColor = UIColor.gray.cgColor
+        self.inputText.layer.borderWidth = 1.0
+        self.inputText.layer.borderColor = UIColor.gray.cgColor
+        
+        inputText.text = inputTextPlaceholder
+        inputText.textColor = UIColor.lightGray
+        inputText.delegate = self
+        
+        outputText.text = outputTextPlaceholder
+        outputText.textColor = UIColor.lightGray
+        outputText.delegate = self
     }
     
     func dismissKeyboard() {
@@ -34,7 +49,28 @@ class ViewController: UIViewController{
         view.endEditing(true)
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            
+            if textView == inputText {
+                textView.text = inputTextPlaceholder
+            } else if textView == outputText {
+                textView.text = outputTextPlaceholder
+            }
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
     @IBAction func encryptPressed(_ sender: Any) {
+        dismissKeyboard()
+        textViewDidBeginEditing(outputText)
         if inputText.text == "" && shiftNumberText.text == "" {
             errorText.text = "No input text or shift number"
             return
@@ -54,6 +90,8 @@ class ViewController: UIViewController{
     }
 
     @IBAction func decryptPressed(_ sender: Any) {
+        dismissKeyboard()
+        textViewDidBeginEditing(inputText)
         if outputText.text == "" {
             errorText.text = "No output text"
             return
@@ -63,7 +101,7 @@ class ViewController: UIViewController{
         let text = outputText.text!//"the cow and fox jumped over the moon"
         var stuff:[(string: String, score: Int, shift: Int)] = []
         
-        for i in (0...26) {
+        for i in (0...25) {
             var tempText = shift(string: text, num: i)
             let textArray = tempText.characters.split{$0 == " "}.map(String.init)
             var score = 0

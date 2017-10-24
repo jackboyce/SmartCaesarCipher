@@ -13,7 +13,7 @@
 		1A00D7BD1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A00D7BB1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld */; };
 		1A00D7BF1F9EDFAD006EF633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A00D7BE1F9EDFAD006EF633 /* Assets.xcassets */; };
 		1A00D7C21F9EDFAD006EF633 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A00D7C01F9EDFAD006EF633 /* LaunchScreen.storyboard */; };
-		1AC1EA1C1F9F2F2200462E72 /* Dict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1EA181F9F105A00462E72 /* Dict.swift */; };
+		1A134E3B1F9FCB1400C29A6D /* Dict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1EA181F9F105A00462E72 /* Dict.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AC1EA1C1F9F2F2200462E72 /* Dict.swift in Sources */,
+				1A134E3B1F9FCB1400C29A6D /* Dict.swift in Sources */,
 				1A00D7B71F9EDFAD006EF633 /* ViewController.swift in Sources */,
 				1A00D7BD1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld in Sources */,
 				1A00D7B51F9EDFAD006EF633 /* AppDelegate.swift in Sources */,
