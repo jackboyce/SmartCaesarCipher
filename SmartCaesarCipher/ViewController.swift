@@ -52,7 +52,7 @@ class ViewController: UIViewController{
         errorText.text = ""
         
         let text = outputText.text!//"the cow and fox jumped over the moon"
-        var stuff:[(string: String, score: Int)] = []
+        var stuff:[(string: String, score: Int, shift: Int)] = []
         
         for i in (0...26) {
             var tempText = shift(string: text, num: i)
@@ -63,10 +63,10 @@ class ViewController: UIViewController{
                     score += val
                 }
             }
-            stuff.append((tempText, score))
+            stuff.append((tempText, score, i))
         }
         
-        var best: (string: String, score: Int) = ("", -1)
+        var best: (string: String, score: Int, shift: Int) = ("", -1, -1)
         for i in stuff {
             if(i.score > best.score) {
                 best = i
@@ -74,6 +74,7 @@ class ViewController: UIViewController{
             print("\(i.score) \(i.string)")
         }
         inputText.text = best.string
+        shiftNumberText.text = "\(26 - best.shift)"
 
         
         
