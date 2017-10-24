@@ -13,7 +13,7 @@
 		1A00D7BD1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A00D7BB1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld */; };
 		1A00D7BF1F9EDFAD006EF633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A00D7BE1F9EDFAD006EF633 /* Assets.xcassets */; };
 		1A00D7C21F9EDFAD006EF633 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A00D7C01F9EDFAD006EF633 /* LaunchScreen.storyboard */; };
-		1A134E3B1F9FCB1400C29A6D /* Dict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1EA181F9F105A00462E72 /* Dict.swift */; };
+		1A54AC8A1F9FDEE80094B245 /* Dict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1EA181F9F105A00462E72 /* Dict.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,6 @@
 		1A00D7BE1F9EDFAD006EF633 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A00D7C11F9EDFAD006EF633 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A00D7C31F9EDFAD006EF633 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A00D7C91F9EFBCD006EF633 /* words_dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = words_dictionary.swift; path = ../../../Downloads/words_dictionary.swift; sourceTree = "<group>"; };
 		1AC1EA181F9F105A00462E72 /* Dict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dict.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +66,6 @@
 				1A00D7C31F9EDFAD006EF633 /* Info.plist */,
 				1A00D7BB1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld */,
 				1AC1EA181F9F105A00462E72 /* Dict.swift */,
-				1A00D7C91F9EFBCD006EF633 /* words_dictionary.swift */,
 			);
 			path = SmartCaesarCipher;
 			sourceTree = "<group>";
@@ -145,7 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A134E3B1F9FCB1400C29A6D /* Dict.swift in Sources */,
+				1A54AC8A1F9FDEE80094B245 /* Dict.swift in Sources */,
 				1A00D7B71F9EDFAD006EF633 /* ViewController.swift in Sources */,
 				1A00D7BD1F9EDFAD006EF633 /* SmartCaesarCipher.xcdatamodeld in Sources */,
 				1A00D7B51F9EDFAD006EF633 /* AppDelegate.swift in Sources */,

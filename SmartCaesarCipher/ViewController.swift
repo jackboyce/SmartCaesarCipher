@@ -50,6 +50,7 @@ class ViewController: UIViewController, UITextViewDelegate{
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        print("END EDIT")
         if textView.text.isEmpty {
             
             if textView == inputText {
@@ -62,43 +63,55 @@ class ViewController: UIViewController, UITextViewDelegate{
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        print("START EDIT")
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     }
     
+    func setBlack(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.textColor = UIColor.black
+        }
+    }
+    
     @IBAction func encryptPressed(_ sender: Any) {
         dismissKeyboard()
-        textViewDidBeginEditing(outputText)
-        if inputText.text == "" && shiftNumberText.text == "" {
-            errorText.text = "No input text or shift number"
+        //textViewDidBeginEditing(outputText)
+        
+        if inputText.text == "" || inputText.text == inputTextPlaceholder && shiftNumberText.text == "" {
+            errorText.text = "No plain text or shift number"
             return
-        } else if inputText.text == "" {
-            errorText.text = "No input text"
+        } else if inputText.text == "" ||  inputText.text == inputTextPlaceholder {
+            errorText.text = "No plain text"
             return
         } else if shiftNumberText.text == "" {
             errorText.text = "No shift number"
             return
-        } else if !CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: shiftNumberText.text!)){
+        } else if !CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: shiftNumberText.text!)) {
             errorText.text = "Shift can only be an integer"
             return
         }
         errorText.text = ""
+        
+        setBlack(outputText)
         
         outputText.text = shift(string: inputText.text!, num: Int(shiftNumberText.text!)!)
     }
 
     @IBAction func decryptPressed(_ sender: Any) {
         dismissKeyboard()
-        textViewDidBeginEditing(inputText)
-        if outputText.text == "" {
-            errorText.text = "No output text"
+//        textViewDidBeginEditing(inputText)
+        if outputText.text == "" || outputText.text == outputTextPlaceholder {
+            errorText.text = "No cipher text"
             return
         }
         errorText.text = ""
         
-        let text = outputText.text!//"the cow and fox jumped over the moon"
+        setBlack(inputText)
+        
+        let text = outputText.text!
         var stuff:[(string: String, score: Int, shift: Int)] = []
         
         for i in (0...25) {
@@ -122,19 +135,15 @@ class ViewController: UIViewController, UITextViewDelegate{
         }
         inputText.text = best.string
         shiftNumberText.text = "\(26 - best.shift)"
-
-        
-        
-//        inputText.text = shift(string: outputText.text!, num: (26 - (Int(shiftNumberText.text!)! % 26)))
     }
     
     func smartDecrypt(str: String) -> String{
-        var text = str//"the cow and fox jumped over the moon"
+        let text = str//"the cow and fox jumped over the moon"
         var stuff:[(string: String, score: Int)] = []
         
         for i in (0...26) {
             var tempText = shift(string: text, num: i)
-            var textArray = tempText.characters.split{$0 == " "}.map(String.init)
+            let textArray = tempText.characters.split{$0 == " "}.map(String.init)
             var score = 0
             for j in textArray {
                 if let val = testDict[j] {
@@ -181,7 +190,5 @@ class ViewController: UIViewController, UITextViewDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
