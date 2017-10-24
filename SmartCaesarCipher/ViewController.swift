@@ -24,7 +24,16 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         //print(smartDecrypt(str: "dro myg kxn pyh tewzon yfob dro wyyx"))
         // Do any additional setup after loading the view, typically from a nib.
+        //Let the keyboard be dismissed by tapping anywhere not on the keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func encryptPressed(_ sender: Any) {
         if inputText.text == "" && shiftNumberText.text == "" {
             errorText.text = "No input text or shift number"
